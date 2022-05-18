@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body {
   padding: 0;
@@ -13,4 +17,25 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.new-full-width{
+  width: 100% !important;
+}
+
+.form {
+  min-width: 800px;
+}
+
+@media screen and (max-width: 840px) {
+  .form {
+    min-width: 400px;
+  }
+}
+
+
+@media screen and (max-width: 410px) {
+  .form {
+    min-width: 200px;
+  }
 }
