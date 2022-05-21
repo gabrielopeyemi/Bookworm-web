@@ -23,14 +23,14 @@ export default function AddArticle() {
   const [nameOfPublisher, setNameOfPublisher] = useState('');
   const [DOIURL, setDOIURL] = useState('');
   const { status, user } = useContext<any>(AuthContext);
-
+  const [_id,setId] = useState('');
   useEffect(() => {
       console.log(query);   
     console.log({ KI: status.loggedIn, user: user.token })
 
   }, []);
   const handleUpdateArticle = async ()=>{
-    const res = await axios.get(`${API}/article/get/${query.id}`,{headers: {
+    const res = await axios.get(`${API}/article/delete/${_id}`,{headers: {
       'Authorization': `Bearer ${JSON.parse(window.localStorage.getItem('TOKEN'))}`
     }})
     console.log(res);
@@ -41,9 +41,9 @@ export default function AddArticle() {
     }})
     console.log(res);
     console.log(res.data.data)
-    const {title,author,journal,volumeNumber, typeOfPublication,nameOfPublisher,DOIURL, monthAndYearOfPublication} = res.data.data;
+    const {_id,title,author,journal,volumeNumber, typeOfPublication,nameOfPublisher,DOIURL, monthAndYearOfPublication} = res.data.data;
     res.data.success ? (
-
+        setId(_id),
         setTitle(title),
         setAuthors(author),
         setJournal(journal),
