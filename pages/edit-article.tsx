@@ -29,15 +29,11 @@ export default function AddArticle() {
     console.log({ KI: status.loggedIn, user: user.token })
 
   }, []);
-  const handlePostArticle =()=>{
-    axios.post(`${API}/article/create`, (x) =>{
-      //...data
-      
-    }, {
-      headers: {
-        'Authorization': `Basic ${token}` 
-      }
-    })
+  const handleUpdateArticle = async ()=>{
+    const res = await axios.get(`${API}/article/get/${query.id}`,{headers: {
+      'Authorization': `Bearer ${JSON.parse(window.localStorage.getItem('TOKEN'))}`
+    }})
+    console.log(res);
   };
   const handleGetArticle = async () => {
     const res = await axios.get(`${API}/article/get/${query.id}`,{headers: {
@@ -132,7 +128,7 @@ export default function AddArticle() {
               value={DOIURL}
               // required={required}
             />
-            <span className="bg-blue-500 w-full cursor-pointer hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <span onClick= {()=>handleUpdateArticle()} className="bg-blue-500 w-full cursor-pointer hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
               Update article
             </span>
           </form>
