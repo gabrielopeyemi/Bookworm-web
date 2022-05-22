@@ -65,7 +65,7 @@ export default function dashboard() {
         setShowModal(false);
       console.log(err);
       setErrorDeleteModal(true);
-      setErrorMessage(res.data.message)
+      setErrorMessage(err)
     }
   }
 
@@ -131,9 +131,9 @@ export default function dashboard() {
                   </i>
                 </span>
                 <span>
-                    ({EachData.monthAndYearOfPublication}). {EachData.volumeNumber}, {EachData.typeOfPublication}. {EachData.nameOfPublisher}
+                    ({EachData.monthAndYearOfPublication}). {EachData.volumeNumber}, {EachData.typeOfPublication}. {EachData.nameOfPublisher}. &nbsp;
                 </span>
-                <a href={EachData.DOIURL}>{EachData.DOIURL}</a>
+                <a className='text-blue-700' href={EachData.DOIURL}>{EachData.DOIURL}</a>
                 
               </div>
               <div className='flex justify-between'>
