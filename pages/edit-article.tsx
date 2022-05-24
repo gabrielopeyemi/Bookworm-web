@@ -30,7 +30,7 @@ export default function AddArticle() {
   useEffect(() => {
     console.log(query);
     console.log({ KI: status.loggedIn, user: user.token })
-
+    handleGetArticle();
   }, []);
   const handleUpdateArticle = async () => {
     let submitData = {
@@ -83,7 +83,7 @@ export default function AddArticle() {
 
   }
 
-  handleGetArticle();
+  
   return (
 
     <div>
