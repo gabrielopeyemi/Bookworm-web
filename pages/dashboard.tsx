@@ -34,7 +34,7 @@ export default function dashboard() {
       } else return router.push('/');
   }
   
-  const handleDeleteArticle = async (id) => {
+  const handleDeleteArticle = async (id: any) => {
     try {
       const res = await axios.post(`${API}article/delete/${id.id}`,data,{
         headers: {
