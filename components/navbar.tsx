@@ -4,7 +4,6 @@
 import { Fragment, useContext, useEffect, useState } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
-import { AuthContext } from '../dataStores/authContext'
 import { useRouter } from 'next/router';
 
 const navigation = [
@@ -18,7 +17,6 @@ function classNames(...classes: string[]) {
 
 export default function Navbar(props: any) {
   const router = useRouter(); 
-  const { status, user } = useContext<any>(AuthContext);
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
