@@ -8,8 +8,8 @@ import { API } from '../config';
 
 export default function Home() {
   const router = useRouter()
-  const [email, setEmail] = useState('famosipe2010@gmail.com');
-  const [password, setPassword] = useState('userspassword@12');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [error, setError] = useState({ status: false, message: 'dddcs' });
 
     
