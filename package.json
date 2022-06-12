@@ -33,6 +33,6 @@
   },
   "engines": {
     "npm" : "6.x.x",
-    "node": "15.x.x"
+    "node": "16.x.x"
   }
 }
