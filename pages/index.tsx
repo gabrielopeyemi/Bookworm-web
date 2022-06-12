@@ -22,8 +22,10 @@ export default function Home() {
       headers: {
           // 'authorization': your_token,
           'Content-Type': 'application/json',
-          'Accept' : 'application/json',
-          // "Access-Control-Allow-Credentials": true,
+          /*'Accept' : 'application/json',
+          "Access-Control-Allow-Credentials": true,
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"*/
       }
     })
     .then(response => {

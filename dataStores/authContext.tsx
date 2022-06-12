@@ -1,6 +1,5 @@
 import { useState, createContext } from "react";
 
-export const AuthContext = createContext();
 
 const AuthProvider = ({ children }: any) => {
 
@@ -37,9 +36,9 @@ const AuthProvider = ({ children }: any) => {
     };
 
     return (
-        <AuthContext.Provider value={ contextValue }>
+        <div>
             { children }
-        </AuthContext.Provider>
+        </div>
     );
 };
 
