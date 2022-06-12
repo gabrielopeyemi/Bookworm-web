@@ -5,6 +5,7 @@ import { LockClosedIcon } from '@heroicons/react/solid';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import { AuthContext } from '../dataStores/authContext';
+import { API } from '../config';
 
 export default function Home() {
   const router = useRouter()
@@ -17,7 +18,7 @@ export default function Home() {
     
   const handleLogin = async () => {
     
-    axios.post( `http://localhost:9000/api/auth/login`, { email, password }, {
+    axios.post( `${API}auth/login`, { email, password }, {
       headers: {
           // 'authorization': your_token,
           'Content-Type': 'application/json',

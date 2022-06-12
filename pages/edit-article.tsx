@@ -43,7 +43,7 @@ export default function AddArticle() {
       nameOfPublisher: nameOfPublisher,
       DOIURL: DOIURL
     };
-    const res = await axios.post(`${API}/article/update/${_id}`, submitData, {
+    const res = await axios.post(`${API}article/update/${_id}`, submitData, {
       headers: {
         'Authorization': `Bearer ${JSON.parse(window.localStorage.getItem('TOKEN'))}`
       }

@@ -38,18 +38,22 @@ export default function AddArticle() {
       nameOfPublisher: nameOfPublisher,
       DOIURL: DOIURL
     }
-    const res = await axios.post(`${API}/article/create`, data, {
+    const Token = window.localStorage.getItem('TOKEN')
+    console.log({Token})
+    const res = await axios.post(`${API}article/create`, data, {
       headers: {
-        'Authorization': `Bearer ${JSON.parse(window.localStorage.getItem('TOKEN'))}`
+        "Content-type": "application/json",
+        'Authorization': `Bearer ${JSON.parse(Token)}`
       }
     });
+    console.log({res});
     if (res.data.success) {
       setSuccessModal(true)
       router.push('/dashboard')
       return;
     }
     setErrorModal(true);
-    setErrorMessage('')
+    setErrorMessage(res.data.message)
   }
   return (
 
