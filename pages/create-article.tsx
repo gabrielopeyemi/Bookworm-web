@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React, { useContext, useEffect, useState } from 'react';
 import Navbar from '../components/navbar';
 import { BiEditAlt } from 'react-icons/bi';
