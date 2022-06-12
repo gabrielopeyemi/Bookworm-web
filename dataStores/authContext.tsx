@@ -43,3 +43,12 @@ const AuthProvider = ({ children }: any) => {
 };
 
 export default AuthProvider;
+
+
+export const handleLogout = () => {
+    if (typeof window !== "undefined") {
+        localStorage.setItem('TOKEN', JSON.stringify({}))
+        localStorage.setItem('DATA', JSON.stringify(""))
+        localStorage.setItem('ISLOGIN', JSON.stringify(false))
+    }
+}

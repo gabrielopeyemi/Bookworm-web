@@ -3,7 +3,6 @@ import Navbar from '../components/navbar';
 import { BiEditAlt } from 'react-icons/bi';
 import { RiDeleteBin6Line } from 'react-icons/ri'
 import InputComponent from '../components/input';
-import { AuthContext } from '../dataStores/authContext';
 import { API } from '../config';
 import { useRouter } from "next/router";
 import axios from 'axios';
@@ -22,14 +21,12 @@ export default function AddArticle() {
   const [typeOfPublication, setTypeOfPublication] = useState('');
   const [nameOfPublisher, setNameOfPublisher] = useState('');
   const [DOIURL, setDOIURL] = useState('');
-  const { status, user } = useContext<any>(AuthContext);
   const [_id, setId] = useState('');
   const [showErrorModal, setErrorModal] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [showSuccessModal, setSuccessModal] = useState(false);
   useEffect(() => {
     console.log(query);
-    console.log({ KI: status.loggedIn, user: user.token })
     handleGetArticle();
   }, []);
   const handleUpdateArticle = async () => {

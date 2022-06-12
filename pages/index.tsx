@@ -4,7 +4,6 @@ import React, { useContext, useState } from 'react';
 import { LockClosedIcon } from '@heroicons/react/solid';
 import axios from 'axios';
 import { useRouter } from 'next/router';
-import { AuthContext } from '../dataStores/authContext';
 import { API } from '../config';
 
 export default function Home() {
@@ -12,8 +11,6 @@ export default function Home() {
   const [email, setEmail] = useState('famosipe2010@gmail.com');
   const [password, setPassword] = useState('userspassword@12');
   const [error, setError] = useState({ status: false, message: 'dddcs' });
-  const { status, user } = useContext<any>(AuthContext)
-  console.log({ status })
 
     
   const handleLogin = async () => {
@@ -30,7 +27,6 @@ export default function Home() {
     })
     .then(response => {
         console.log({ UI: response.data.data });
-        status.login({token: response.data.token, data: response.data.data})
         if (typeof window !== "undefined") {
           localStorage.setItem('TOKEN', JSON.stringify(response.data.token))
           localStorage.setItem('DATA', JSON.stringify(response.data.data))

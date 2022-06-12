@@ -5,7 +5,6 @@ import Navbar from '../components/navbar';
 import { BiEditAlt } from 'react-icons/bi';
 import { RiDeleteBin6Line } from 'react-icons/ri'
 import { useRouter } from 'next/router';
-import { AuthContext } from '../dataStores/authContext';
 import Modals from '../components/Modals';
 import axios from 'axios';
 import { API } from '../config';
@@ -16,7 +15,6 @@ export default function dashboard() {
   const [showModal, setShowModal] = useState(false);
   const router = useRouter(); 
   const [data, setData] = useState([]);
-  const { status, user } = useContext<any>(AuthContext);
   const [showSuccessDeleteModal, setSuccessDeleteModal] = useState(false);
   const [showErrorDeleteModal, setErrorDeleteModal] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');

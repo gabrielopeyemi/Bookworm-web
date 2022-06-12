@@ -20,7 +20,6 @@ export default function AddArticle() {
   const [typeOfPublication, setTypeOfPublication] = useState('');
   const [nameOfPublisher, setNameOfPublisher] = useState('');
   const [DOIURL, setDOIURL] = useState('');
-  const { status, user } = useContext<any>(AuthContext);
   const [showSuccessModal, setSuccessModal] = useState(false);
   const [showErrorModal, setErrorModal] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
