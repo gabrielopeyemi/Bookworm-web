@@ -5,7 +5,6 @@ import { Fragment, useContext, useEffect, useState } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
 import { useRouter } from 'next/router';
-import { handleLogout } from '../dataStores/authContext';
 
 const navigation = [
   { name: 'Dashboard', href: '/dashboard', current: false },
@@ -94,7 +93,11 @@ export default function Navbar(props: any) {
                         {({ active }) => (
                           <span
                             onClick={() => {
-                              handleLogout()
+                              if (typeof window !== "undefined") {
+                                localStorage.setItem('TOKEN', JSON.stringify({}))
+                                localStorage.setItem('DATA', JSON.stringify(""))
+                                localStorage.setItem('ISLOGIN', JSON.stringify(false))
+                            }
                               router.push('/')
                             }}
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700 cursor-pointer')}

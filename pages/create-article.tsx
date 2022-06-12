@@ -3,7 +3,6 @@ import Navbar from '../components/navbar';
 import { BiEditAlt } from 'react-icons/bi';
 import { RiDeleteBin6Line } from 'react-icons/ri'
 import InputComponent from '../components/input';
-import { AuthContext } from '../dataStores/authContext';
 import { API } from '../config';
 import axios from 'axios';
 import { useRouter } from 'next/router';
