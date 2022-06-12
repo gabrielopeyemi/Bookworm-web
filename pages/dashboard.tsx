@@ -29,20 +29,16 @@ export default function dashboard() {
   }, []);
 
   const checkIfIsLogin = () => {
-    if(typeof window !== 'undefined'){
-      const ISLOGIN= window.localStorage.getItem('ISLOGIN');
-      
-      if(JSON.parse(ISLOGIN).status){
+      if(JSON.parse(window.localStorage.getItem('ISLOGIN')!).status){
         return handleGetAllArticle();
       } else return router.push('/');
-    }
   }
   
   const handleDeleteArticle = async (id) => {
     try {
       const res = await axios.post(`${API}article/delete/${id.id}`,data,{
         headers: {
-          'Authorization': `Bearer ${JSON.parse(window.localStorage.getItem('TOKEN'))}` 
+          'Authorization': `Bearer ${JSON.parse(window.localStorage.getItem('TOKEN')!)}` 
         }
       })
 
@@ -59,7 +55,7 @@ export default function dashboard() {
         setErrorMessage(res.data.message)
       }
     }
-    catch(err){
+    catch(err: any){
         setShowModal(false);
       console.log(err);
       setErrorDeleteModal(true);
@@ -70,7 +66,7 @@ export default function dashboard() {
   const handleGetAllArticle = async () =>{
     try{
       const res = await axios.get(`${API}article`, { headers: {
-        "Authorization" : `Bearer ${JSON.parse(window.localStorage.getItem('TOKEN'))}`,
+        "Authorization" : `Bearer ${JSON.parse(window.localStorage.getItem('TOKEN')!)}`,
         'Content-Type': 'application/json',
         'Accept' : 'application/json  ',
       } })

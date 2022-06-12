@@ -42,7 +42,7 @@ export default function AddArticle() {
     };
     const res = await axios.post(`${API}article/update/${_id}`, submitData, {
       headers: {
-        'Authorization': `Bearer ${JSON.parse(window.localStorage.getItem('TOKEN'))}`
+        'Authorization': `Bearer ${JSON.parse(window.localStorage.getItem('TOKEN')!)}`
       }
     })
     console.log(res);
@@ -59,7 +59,7 @@ export default function AddArticle() {
   const handleGetArticle = async () => {
     const res = await axios.get(`${API}/article/get/${query.id}`, {
       headers: {
-        'Authorization': `Bearer ${JSON.parse(window.localStorage.getItem('TOKEN'))}`
+        'Authorization': `Bearer ${JSON.parse(window.localStorage.getItem('TOKEN')!)}`
       }
     })
     console.log(res);

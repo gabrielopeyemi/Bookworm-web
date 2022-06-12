@@ -41,7 +41,7 @@ export default function AddArticle() {
     const res = await axios.post(`${API}article/create`, data, {
       headers: {
         "Content-Type": "application/json",
-        'Authorization': `Bearer ${JSON.parse(Token)}`
+        'Authorization': `Bearer ${JSON.parse(Token!)}`
       }
     });
     console.log({res});
