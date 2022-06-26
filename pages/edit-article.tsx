@@ -8,7 +8,7 @@ import { API } from '../config';
 import { useRouter } from "next/router";
 import axios from 'axios';
 
-export default function AddArticle() {
+export default function AddArticle(props: any) {
 
   const router = useRouter();
   const query = router.query;
@@ -27,7 +27,7 @@ export default function AddArticle() {
   const [errorMessage, setErrorMessage] = useState('');
   const [showSuccessModal, setSuccessModal] = useState(false);
   useEffect(() => {
-    console.log(query);
+    console.log(query, props);
     handleGetArticle();
   }, []);
   const handleUpdateArticle = async () => {
@@ -41,8 +41,11 @@ export default function AddArticle() {
       nameOfPublisher: nameOfPublisher,
       DOIURL: DOIURL
     };
+    const Token = window.localStorage.getItem('TOKEN')
+    console.log({Token})
     const res = await axios.post(`${API}article/update/${_id}`, submitData, {
       headers: {
+        "Content-Type": "application/json",
         'Authorization': `Bearer ${JSON.parse(window.localStorage.getItem('TOKEN')!)}`
       }
     })
@@ -58,9 +61,12 @@ export default function AddArticle() {
     }
   };
   const handleGetArticle = async () => {
-    const res = await axios.get(`${API}/article/get/${query.id}`, {
+    const Token = window.localStorage.getItem('TOKEN')
+    console.log({Token})
+    const res = await axios.get(`${API}article/get/${query.id}`, {
       headers: {
-        'Authorization': `Bearer ${JSON.parse(window.localStorage.getItem('TOKEN')!)}`
+        "Content-Type": "application/json",
+        'Authorization': `Bearer ${JSON.parse(Token!)}`
       }
     })
     console.log(res);
@@ -139,6 +145,7 @@ export default function AddArticle() {
             type="text"
             id="monthAndYearOfPublication"
             placeholder=""
+            // types='date'
             onChange= {(e: any) => setMonthAndYearOfPublication(e.target.value)}
            value={monthAndYearOfPublication}
           // required={required}
@@ -156,8 +163,11 @@ export default function AddArticle() {
             label='Type of Publication'
             type="text"
             id="typeOfPublication"
+            types='section'
             placeholder=""
+            sectionData={['Journal Articles', 'Book Chapters', 'Conference Proceedings', 'Invited Presentations', 'Technical Reports']}
             onChange= {(e: any) => setTypeOfPublication(e.target.value)}
+            value= {typeOfPublication}
           // required={required}
           />
           <InputComponent
@@ -166,6 +176,7 @@ export default function AddArticle() {
             id="nameOfPublisher"
             placeholder=""
             onChange= {(e: any) => setNameOfPublisher(e.target.value)}
+            value={nameOfPublisher}
           // required={required}
           />
           <InputComponent
@@ -174,6 +185,7 @@ export default function AddArticle() {
             id="DOIURL"
             placeholder=""
             onChange= {(e: any) => setDOIURL(e.target.value)}
+            value={DOIURL}
           // required={required}
           />
           <span onClick={() => handleUpdateArticle()} className="bg-blue-500 w-full cursor-pointer hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
